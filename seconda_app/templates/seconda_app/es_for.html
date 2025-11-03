@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  Cicla una sequenza usando <b>forloop.counter</b><br>
+  {% for x in list2 %}
+    <i>{{ forloop.counter }}</i> : {{ x }}<br>
+  {% endfor %}
+  <br>
+
+  Cicla una sequenza usando <b>forloop.counter0</b><br>
+  {% for x in list2 %}
+    <i>{{ forloop.counter0 }}</i> : {{ x }}<br>
+  {% endfor %}
+  <br>
+
+  Stampa il primo elemento della sequenza usando <b>forloop.first</b>:<br>
+  {% for x in list2 %}
+    {% if forloop.first %}
+      <i>Il primo elemento</i> → {{ x }}<br>
+    {% endif %}
+  {% endfor %}
+  <br>
+
+  Stampa l'ultimo elemento della lista usando <b>forloop.last</b>:<br>
+  {% for x in list2 %}
+    {% if forloop.last %}
+      <i>L'ultimo elemento</i> → {{ x }}<br>
+    {% endif %}
+  {% endfor %}
+  <br>
+
+  Stampa il numero degli elementi non ancora ciclati usando <b>forloop.revcounter</b><br>
+  {% for x in list2 %}
+    <i>Numero degli elementi da dover ancora ciclare</i> → {{ forloop.revcounter }}<br>
+    <i>Elemento</i> → {{ x }}<br>
+  {% endfor %}
+  <br>
+
+  Stampa il numero degli elementi non ancora ciclati usando <b>forloop.revcounter0</b><br>
+  {% for x in list2 %}
+    <i>Numero degli elementi da dover ancora ciclare</i> → {{ forloop.revcounter0 }}<br>
+    <i>Elemento</i> → {{ x }}<br>
+  {% endfor %}
+  <br>
+
+  Stampa la sequenza al contrario usando <b>reversed</b>, attributo del tag <b>for</b>:<br>
+  {% for x in list2 reversed %}
+    <i>Elemento</i> → {{ x }}<br>
+  {% endfor %}
+  <h2>Contenuto del Dizionario</h2>
+  <ul>
+    {% for key,value in my_dict.items %}
+        <li>{{key}}:{{value}}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
