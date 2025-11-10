@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EL LISTADO</title>
+{% extends "base.html"%}
+
+{%block title%}{{block.super}}|Lista{%endblock title %}
+
+{%block content%}
 <style>
     h1{
         font-size: 67px;
@@ -21,14 +19,12 @@
     body{
         background-color: black;
     }
-</style>    
-</head>
-<body>
-    <h1>LISTONA</h1>
+</style>
+    <h1>LISTONA</h1> 
     <ol type="none">
         <li>El Primo</li>
         <li>Secondino</li>
         <li>Terzultimo</li>
     </ol>
-</body>
-</html>
+{%endblock content%} 
+   
