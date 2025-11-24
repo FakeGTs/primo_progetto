@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{%block title%}{{block.super}}|INDEX{%endblock title %}
+
+{%block content%}
+    <h1>Index</h1>  
+    <ol>
+        <li><a href ="{% url 'prova_pratica_0:somma'%}">PaginaSomma</a></li>
+        <li><a href ="{% url 'prova_pratica_0:media'%}">PaginaMedia</a></li>
+    </ol>
+{%endblock content%}
