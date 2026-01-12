@@ -1,0 +1,97 @@
+DJANGO ORM – ESEMPI DI CREAZIONE, LETTURA, AGGIORNAMENTO, CANCELLAZIONE
+
+
+CREAZIONE DI OGGETTI
+
+
+from news.models import Giornalista
+
+# Visualizzare tutti i giornalisti
+Giornalista.objects.all()
+
+# Creazione tramite parametri nel costruttore
+g1 = Giornalista(nome="Mario", cognome="Rossi")
+g1.save()
+
+# Creazione assegnando proprietà successivamente
+g2 = Giornalista()
+g2.nome = "Pinco"
+g2.cognome = "Pallo"
+g2.save()
+
+# Creazione immediata
+Giornalista.objects.create(nome="Nome", cognome="Cognome")
+
+
+LETTURA DEGLI OGGETTI
+
+
+# Recupero tramite id/pk
+g1.id
+g3.id
+g2.pk
+
+# Recupero di un oggetto specifico
+Giornalista.objects.get(pk=1)
+
+# Filtrare per campo
+Giornalista.objects.filter(nome="Mario")
+
+# Escludere per campo
+Giornalista.objects.exclude(cognome="Rossi")
+
+# Iterare sugli oggetti
+for g in Giornalista.objects.all():
+    g.nome
+
+
+AGGIORNAMENTO DEGLI OGGETTI
+
+
+gio = Giornalista.objects.get(pk=2)
+gio.nome = "Guido"
+gio.cognome = "Guidi"
+gio.save()
+
+
+CANCELLAZIONE DEGLI OGGETTI
+
+
+gior = Giornalista.objects.get(pk=1)
+gior.delete()
+
+
+CREAZIONE ARTICOLO (Relazione con Giornalista)
+
+from news.models import Articolo
+
+# Creazione base (dà errore perché manca il giornalista)
+al = Articolo()
+al.titolo = "primo articolo!"
+al.contenuto = "lorem ipsum doloret sin amet"
+# al.save()  <-- errore!
+
+# Associare un giornalista
+g = Giornalista.objects.get(id=3)
+al.giornalista = g
+al.save()
+
+
+CREAZIONE ARTICOLO CON GIORNALISTA DIRETTAMENTE
+
+
+nuovo = Articolo(
+    titolo="Secondo articolo!",
+    contenuto="il mio secondo articolo!",
+    giornalista=Giornalista.objects.get(id=3)
+)
+nuovo.save()
+
+UTILIZZO DELLA RELAZIONE
+
+# Id del giornalista collegato
+nuovo.giornalista_id
+
+# Recuperare tutti gli articoli di un giornalista
+x = Giornalista.objects.get(id=3)
+x.articoli.all()
