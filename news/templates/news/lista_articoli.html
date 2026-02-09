@@ -9,16 +9,20 @@
         {% if is_giornalista %}
                 <h1> Lista Articoli di: {{giornalista.nome}} {{giornalista.cognome}}</h1>
                 {%for articolo in articoli %}
-                        <h3><strong>  {{articolo.titolo}}</strong></h3>
+                        <h3><strong>  TITOLO: </strong>
+                          <a href="/news/articolo/{{articolo.id}}"> {{articolo.titolo}}</a>
+                        </h3>
                         <p>{{articolo.contenuto}}</p>
                         <hr style="border: none; height: 1px; background-color: #333;">
                 {%endfor%} 
         {% else %}
                 <h1> Lista Articoli</h1>
         {%for articolo in articoli %}
-                <h3><strong>  {{articolo.titolo}}</strong></h3>
+                <h3><strong>  Titolo: </strong></h3>
                 <p> {{articolo.contenuto}}</p>
-                <p> Autore: {{articolo.giornalista}}</p>
+                <p> Autore:  
+                <a href="{% url 'news:giornalista_detail' articolo.giornalista.id %}"> {{articolo.giornalista}}</a>
+                </p>
                 <hr style="border: none; height: 1px; background-color: #333;">
         {%endfor%} 
         {%endif%} 

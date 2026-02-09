@@ -14,7 +14,7 @@ def homeview(request):
 def index(request):
     return render(request, "news/index.html")
 
-# 3. Dettaglio Articolo (rinominata in ArticoloDetailView per il tuo urls.py)
+# 3. Dettaglio Articolo
 def ArticoloDetailView(request, pk):
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {"articolo": articolo}
@@ -101,3 +101,9 @@ def queryBase(request):
     }
 
     return render(request, "query.html", context)
+
+def GiornalistaDetailView(request, pk):
+    giornalista = get_object_or_404(Giornalista, pk=pk)
+    articoli = Articolo.objects.filter(giornalista=giornalista)
+    context = {"giornalista": giornalista, "articoli": articoli}
+    return render(request, "giornalista_detail.html", context)
