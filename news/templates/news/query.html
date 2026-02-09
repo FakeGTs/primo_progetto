@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+
+{% block title %} Risultati Query Avanzate {% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center mb-4">Risultati Query Django</h1>
+        <hr>
+
+        <div class="alert alert-secondary" role="alert">Query Base (1-15)</div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">1. Articoli giornalisti 'Antonini'</div>
+            <ul class="list-group list-group-flush">
+                {% for articolo in articoli_cognome %}
+                    <li class="list-group-item">{{ articolo.titolo }}</li>
+                {% empty %}
+                    <li class="list-group-item">Nessun risultato.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">2. Totale Articoli: {{ numero_totale_articoli }}</h5>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">3. Articoli del giornalista (ID 1): {{ numero_articoli_giornalista_1 }}</h5>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">4. Articoli ordinati per visualizzazioni</div>
+            <ul class="list-group list-group-flush">
+                {% for articolo in articoli_ordinati %}
+                    <li class="list-group-item">{{ articolo.titolo }} - Views: {{ articolo.visualizzazioni }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">5. Articoli con 0 visualizzazioni</div>
+            <ul class="list-group list-group-flush">
+                {% for articolo in articoli_senza_visualizzazioni %}
+                    <li class="list-group-item">{{ articolo.titolo }}</li>
+                {% empty %}
+                    <li class="list-group-item">Tutti gli articoli hanno visualizzazioni.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">6. Articolo più visualizzato</h5>
+                {% if articolo_piu_visualizzato %}
+                    <p>{{ articolo_piu_visualizzato.titolo }} ({{ articolo_piu_visualizzato.visualizzazioni }})</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">7. Giornalisti nati dopo il 1990</div>
+            <ul class="list-group list-group-flush">
+                {% for g in giornalisti_data %}
+                    <li class="list-group-item">{{ g.nome }} {{ g.cognome }} ({{ g.anno_di_nascita }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">8. Articoli del 01/01/2023</div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_del_giorno %}
+                    <li class="list-group-item">{{ a.titolo }}</li>
+                {% empty %}
+                    <li class="list-group-item">Nessuno in questa data.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">9. Articoli anno 2023</div>
+            <ul class="list-group list-group-flush">
+                {% for a in giornalisti_periodo %}
+                    <li class="list-group-item">{{ a.titolo }} ({{ a.data }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">10. Articoli di giornalisti nati prima del 1980</div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_giornalisti %}
+                    <li class="list-group-item">{{ a.titolo }} - {{ a.giornalista.cognome }} ({{ a.giornalista.anno_di_nascita }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>11. Più giovane:</h5> 
+                        {% if giornalista_giovane %} {{ giornalista_giovane.cognome }} ({{ giornalista_giovane.anno_di_nascita }}) {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>12. Più anziano:</h5>
+                        {% if giornalista_vecchio %} {{ giornalista_vecchio.cognome }} ({{ giornalista_vecchio.anno_di_nascita }}) {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">13. Ultimi 5 articoli</div>
+            <ul class="list-group list-group-flush">
+                {% for a in ultimi %}
+                    <li class="list-group-item">{{ a.titolo }} ({{ a.data }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">14. Articoli con visualizzazioni >= 100</div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_minime_visualizzazioni %}
+                    <li class="list-group-item">{{ a.titolo }} ({{ a.visualizzazioni }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">15. Parola 'importante' nel titolo</div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_parola %}
+                    <li class="list-group-item">{{ a.titolo }}</li>
+                {% empty %}
+                    <li class="list-group-item">Nessuna corrispondenza.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <hr>
+        <div class="alert alert-danger" role="alert">Nuove Query Avanzate (16-20)</div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                16. Articoli pubblicati a Gennaio 2023
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_mese_anno %}
+                    <li class="list-group-item">{{ a.titolo }} (Data: {{ a.data }})</li>
+                {% empty %}
+                    <li class="list-group-item">Nessun articolo trovato per Gen 2023.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                17. Giornalisti con almeno un articolo da +100 views
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for g in giornalisti_con_articoli_popolari %}
+                    <li class="list-group-item">{{ g.nome }} {{ g.cognome }}</li>
+                {% empty %}
+                    <li class="list-group-item">Nessun giornalista soddisfa il criterio.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                18. AND: Giornalista nato dopo il 1990 <strong>E</strong> Views >= 50
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_con_and %}
+                    <li class="list-group-item">
+                        {{ a.titolo }} 
+                        <small class="text-muted">(Nato: {{ a.giornalista.anno_di_nascita|date:"Y" }}, Views: {{ a.visualizzazioni }})</small>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">Nessuna corrispondenza AND.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                19. OR: Giornalista nato dopo il 1990 <strong>OPPURE</strong> Views <= 50
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_con_or %}
+                    <li class="list-group-item">
+                        {{ a.titolo }} 
+                        <small class="text-muted">(Nato: {{ a.giornalista.anno_di_nascita|date:"Y" }}, Views: {{ a.visualizzazioni }})</small>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">Nessuna corrispondenza OR.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                20. NOT: Giornalista <strong>NON</strong> nato prima del 1990
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for a in articoli_con_not %}
+                    <li class="list-group-item">
+                        {{ a.titolo }} 
+                        <small class="text-muted">(Nato: {{ a.giornalista.anno_di_nascita|date:"Y" }})</small>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">Nessuna corrispondenza NOT.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

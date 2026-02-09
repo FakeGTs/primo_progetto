@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block title%}
+        Lista
+{% endblock title%}
+
+{% block content%}
+
+        {% if is_giornalista %}
+                <h1> Lista Articoli di: {{giornalista.nome}} {{giornalista.cognome}}</h1>
+                {%for articolo in articoli %}
+                        <h3><strong>  {{articolo.titolo}}</strong></h3>
+                        <p>{{articolo.contenuto}}</p>
+                        <hr style="border: none; height: 1px; background-color: #333;">
+                {%endfor%} 
+        {% else %}
+                <h1> Lista Articoli</h1>
+        {%for articolo in articoli %}
+                <h3><strong>  {{articolo.titolo}}</strong></h3>
+                <p> {{articolo.contenuto}}</p>
+                <p> Autore: {{articolo.giornalista}}</p>
+                <hr style="border: none; height: 1px; background-color: #333;">
+        {%endfor%} 
+        {%endif%} 
+{% endblock content%}
