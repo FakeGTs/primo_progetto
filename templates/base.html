@@ -62,8 +62,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{% url 'news:index'%}">Index</a>
           <a class="dropdown-item" href="{% url 'news:homeview'%}">HomePage</a>
-
-
+          <a class="dropdown-item" href="{% url 'news:query'%}">Query</a>
         </div>
       </li>
     </ul>
@@ -74,7 +73,7 @@
         {%block content%}
         {%endblock content%}
 
-        {%block script%}s
+        {%block script%}
         {%endblock script%}
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
