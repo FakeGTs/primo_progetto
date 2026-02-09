@@ -11,10 +11,10 @@
         <div class="alert alert-secondary" role="alert">Query Base (1-15)</div>
 
         <div class="card mb-3">
-            <div class="card-header bg-primary text-white">1. Articoli giornalisti 'Rossi'</div>
+            <div class="card-header bg-primary text-white">1. Articoli giornalisti 'Antonini'</div>
             <ul class="list-group list-group-flush">
                 {% for articolo in articoli_cognome %}
-                    <li class="list-group-item">{{ articolo.titolo }} ({{ articolo.giornalista.cognome }})</li>
+                    <li class="list-group-item">{{ articolo.titolo }}</li>
                 {% empty %}
                     <li class="list-group-item">Nessun risultato.</li>
                 {% endfor %}
@@ -85,7 +85,7 @@
         <div class="card mb-3">
             <div class="card-header bg-primary text-white">9. Articoli anno 2023</div>
             <ul class="list-group list-group-flush">
-                {% for a in articoli_periodo %}
+                {% for a in giornalisti_periodo %}
                     <li class="list-group-item">{{ a.titolo }} ({{ a.data }})</li>
                 {% endfor %}
             </ul>
@@ -113,7 +113,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5>12. Più anziano:</h5>
-                        {% if giornalista_anziano %} {{ giornalista_anziano.cognome }} ({{ giornalista_anziano.anno_di_nascita }}) {% endif %}
+                        {% if giornalista_vecchio %} {{ giornalista_vecchio.cognome }} ({{ giornalista_vecchio.anno_di_nascita }}) {% endif %}
                     </div>
                 </div>
             </div>
