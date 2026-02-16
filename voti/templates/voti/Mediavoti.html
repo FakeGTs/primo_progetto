@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for studente, media in medie.items %}
+        {{ studente }} : {{ media|stringformat:".1f" }}<br>
+    {% endfor %}
+{% endblock %}

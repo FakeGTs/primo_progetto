@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{%block title%}{{block.super}}|INDEX NEWS{%endblock title %}
+
+{%block content%}
+    <ol>
+        <li><a href ="{% url 'voti:materie'%}">Visualizza Materie</a></li>
+        <li><a href ="{% url 'voti:materieVoti'%}">Visuaizza Materie e Voti</a></li>
+        <li><a href ="{% url 'voti:Mediavoti'%}">Visualizzare media voti Studente</a></li>
+        <li><a href ="{% url 'voti:MaxMin'%}">Voti Max e Min Studenti</a></li>
+
+    </ol>
+{%endblock content%}    

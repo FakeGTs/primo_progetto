@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Dettaglio Voti</h1>
+    {% for studente, record in registro.items %}
+        <div class="studente-block">
+            <h3>{{ studente }}</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                {% for m, v, a in record %}
+                    <li>{{ m }}, {{ v }}, {{ a }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

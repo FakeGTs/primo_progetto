@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Statistiche Voti</h1>
+    
+    <div style="margin-bottom: 20px;">
+        <p>
+            <strong>Voto massimo:</strong> {{ v_max }}<br>
+            <strong>Materie con voto massimo:</strong> {{ mat_max|join:", " }}<br>
+            <strong>Studenti con voto massimo:</strong> {{ stud_max|join:", " }}
+        </p>
+    </div>
+
+    <hr>
+
+    <div>
+        <p>
+            <strong>Voto minimo:</strong> {{ v_min }}<br>
+            <strong>Materie con voto minimo:</strong> {{ mat_min|join:", " }}<br>
+            <strong>Studenti con voto minimo:</strong> {{ stud_min|join:", " }}
+        </p>
+    </div>
+{% endblock %}

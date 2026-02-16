@@ -55,7 +55,7 @@
           <a class="dropdown-item" href="{% url 'prova_pratica_0:media'%}">Media</a>
         </div>
       </li>
-            <li class="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSeconda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          News
         </a>
@@ -63,6 +63,18 @@
           <a class="dropdown-item" href="{% url 'news:index'%}">Index</a>
           <a class="dropdown-item" href="{% url 'news:homeview'%}">HomePage</a>
           <a class="dropdown-item" href="{% url 'news:query'%}">Query</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSeconda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Voti
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'voti:index'%}">Index</a>
+          <a class="dropdown-item" href="{% url 'voti:materie'%}">Materie</a>
+          <a class="dropdown-item" href="{% url 'voti:materieVoti'%}">Materie e voti</a>
+          <a class="dropdown-item" href="{% url 'voti:Mediavoti'%}">Media Voti Studente</a>
+          <a class="dropdown-item" href="{% url 'voti:MaxMin'%}">Massimo e Minimo</a>
         </div>
       </li>
     </ul>
