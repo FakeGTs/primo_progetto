@@ -1,29 +1,33 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block title%}
+{% block title %}
         Lista
-{% endblock title%}
+{% endblock title %}
 
-{% block content%}
+{% block content %}
 
         {% if is_giornalista %}
-                <h1> Lista Articoli di: {{giornalista.nome}} {{giornalista.cognome}}</h1>
-                {%for articolo in articoli %}
-                        <h3><strong>  TITOLO: </strong>
-                          <a href="/news/articolo/{{articolo.id}}"> {{articolo.titolo}}</a>
+                <h1> Lista Articoli di: {{ giornalista.nome }} {{ giornalista.cognome }}</h1>
+                {% for articolo in articoli %}
+                        <h3><strong> TITOLO: </strong>
+                          <a href="{% url 'news:articolo_detail' articolo.id %}">{{ articolo.titolo }}</a>
                         </h3>
-                        <p>{{articolo.contenuto}}</p>
+                        <p>{{ articolo.contenuto }}</p>
                         <hr style="border: none; height: 1px; background-color: #333;">
-                {%endfor%} 
+                {% endfor %} 
+                
         {% else %}
                 <h1> Lista Articoli</h1>
-        {%for articolo in articoli %}
-                <h3><strong>  Titolo: </strong></h3>
-                <p> {{articolo.contenuto}}</p>
-                <p> Autore:  
-                <a href="{% url 'news:giornalista_detail' articolo.giornalista.id %}"> {{articolo.giornalista}}</a>
-                </p>
-                <hr style="border: none; height: 1px; background-color: #333;">
-        {%endfor%} 
-        {%endif%} 
-{% endblock content%}
+                {% for articolo in articoli %}
+                        <h3><strong> Titolo: </strong>
+                          <a href="{% url 'news:articolo_detail' articolo.id %}">{{ articolo.titolo }}</a>
+                        </h3>
+                        <p>{{ articolo.contenuto }}</p>
+                        <p> Autore:  
+                          <a href="{% url 'news:giornalista_detail' articolo.giornalista.id %}">{{ articolo.giornalista }}</a>
+                        </p>
+                        <hr style="border: none; height: 1px; background-color: #333;">
+                {% endfor %} 
+        {% endif %} 
+
+{% endblock content %}

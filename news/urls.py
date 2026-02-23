@@ -5,7 +5,7 @@ app_name="news"
 
 urlpatterns=[
     path('index', index , name="index"),
-    path('homeview', homeview , name="homeview"), 
+    #path('homeview', homeview , name="homeview"), sostituito con lista_articoli per rendere più chiaro il nome della view
     path("articolo/<int:pk>", ArticoloDetailView , name="articolo_detail"),
     path("lista_articoli", listaArticoli , name="lista_articoli"),
     path("lista_articoli/<int:pk>", listaArticoli , name="lista_articoli"),

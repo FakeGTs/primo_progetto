@@ -8,7 +8,7 @@ def homeview(request):
     articoli = Articolo.objects.all()
     giornalisti = Giornalista.objects.all()
     context = {"articoli": articoli, "giornalisti": giornalisti}
-    return render(request, "news/homepage.html", context)
+    return render(request, "news/homeview.html", context)
 
 # 2. Indice
 def index(request):
