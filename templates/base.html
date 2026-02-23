@@ -77,6 +77,17 @@
           <a class="dropdown-item" href="{% url 'voti:MaxMin'%}">Massimo e Minimo</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSeconda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Contatti
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+          <a class="dropdown-item" href="{% url 'forms_app:index'%}">Index Contatti</a>
+          <a class="dropdown-item" href="{% url 'forms_app:contatti'%}">Contatti</a>
+          <a class="dropdown-item" href="{% url 'forms_app:lista_contatti'%}">Lista Contatti</a>
+
+        </div>
+      </li>
     </ul>
   </div>
     </nav>
