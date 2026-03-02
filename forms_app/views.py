@@ -10,7 +10,7 @@ from django.http import HttpResponse
 #     return render(request, "contatto.html", context)
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "forms_app/index.html")
 
 def contatti(request):
     if request.method == "POST":

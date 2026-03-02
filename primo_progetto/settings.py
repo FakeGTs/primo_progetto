@@ -69,7 +69,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'prova_pratica_0/templates/prova_pratica_0'),
                  os.path.join(BASE_DIR, 'news/templates/news'),
                  os.path.join(BASE_DIR, 'voti/templates/voti'),
-                 os.path.join(BASE_DIR, 'forms_app/templates/forms_app')],
+                 os.path.join(BASE_DIR, 'forms_app/templates/forms_app'),],
 
                  
         'APP_DIRS': True,
