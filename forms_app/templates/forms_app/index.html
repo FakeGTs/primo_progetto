@@ -6,6 +6,9 @@
     <ol>
         <li><a href ="{% url 'forms_app:contatti'%}">Contatti</a></li>
         <li><a href ="{% url 'forms_app:lista_contatti'%}">Lista Contatti</a></li>
+        <li><a href ="{% url 'forms_app:elimina_contatto' 1%}">Elimina Contatto</a></li>
+        <li><a href ="{% url 'forms_app:modifica_contatto' 1%}">Modifica Contatto</a></li>
+
     </ol>
 {%endblock content%}    
 
