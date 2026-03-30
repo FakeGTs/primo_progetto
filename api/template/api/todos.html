@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }}|TODOS{% endblock title %}
+
+{% block content %}
+    <h1>Lista Todos</h1>
+    {%if errore %}
+        <div class="alert alert-danger" role="alert">
+            {{ errore }}
+        </div>
+    {% endif %}
+    {% if todos %}
+        <ul>
+            {% for todo in todos %}
+                <li>ID: {{ todo.id }}</li>
+                <li> Titolo: {{ todo.title }}</li>
+                <li> - Completato: {{ todo.completed }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nessun todo trovato.</p>
+    {% endif %}
+{% endblock content %}

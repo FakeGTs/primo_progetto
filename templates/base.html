@@ -117,6 +117,17 @@
               <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
           {% endif %}
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSeconda" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         API
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+          <a class="dropdown-item" href="{% url 'api:index'%}">Index API</a>
+          <a class="dropdown-item" href="{% url 'api:todos'%}">Todos</a>
+          <a class="dropdown-item" href="{% url 'api:users'%}">Users</a>
+          <a class="dropdown-item" href="/">Index Root</a>
+        </div>
+      </li>
     </ul>
   </div>
     </nav>
