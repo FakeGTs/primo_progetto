@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} | TODOS{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Lista Todos</h1>
+
+    {% if messaggio_errore %}
+        <div class="alert alert-danger" role="alert">
+            {{ messaggio_errore }}
+        </div>
+    {% endif %}
+
+    {% if todos %}
+        <div class="list-group mb-5">
+            {% for todo in todos %}
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ todo.title|capfirst }}</h5>
+                        <small class="text-muted">ID: {{ todo.id }}</small>
+                    </div>
+                    
+                    <p class="mb-1 mt-2">
+                        Stato: 
+                        {% if todo.completed %}
+                            <span class="badge badge-success">Completato</span>
+                        {% else %}
+                            <span class="badge badge-warning">Da completare</span>
+                        {% endif %}
+                    </p>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% if not messaggio_errore %}
+            <div class="alert alert-info" role="alert">
+                Nessun todo trovato.
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock content %}

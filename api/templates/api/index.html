@@ -5,4 +5,6 @@
 {% block content %}
     <h1>Benvenuto nella nostra API</h1>
     <p>Questa è la pagina principale dell'API.</p>
+    <p>Puoi accedere alla lista dei todos cliccando sul link qui sotto:</p>
+    <a href="{% url 'api:todos' %}" class="btn btn-primary">Visualizza Todos</a>
 {% endblock content %}
