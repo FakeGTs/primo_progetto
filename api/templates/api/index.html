@@ -3,8 +3,11 @@
 {% block title %}{{ block.super }}|Home{% endblock title %}
 
 {% block content %}
-    <h1>Benvenuto nella nostra API</h1>
+    <h1>Benvenuto nelle nostre API</h1>
     <p>Questa è la pagina principale dell'API.</p>
     <p>Puoi accedere alla lista dei todos cliccando sul link qui sotto:</p>
     <a href="{% url 'api:todos' %}" class="btn btn-primary">Visualizza Todos</a>
+    <hr>
+    <p>Inoltre, puoi visualizzare le tracce salvate su Spotify cliccando sul link qui sotto:</p>
+    <a href="{% url 'api:spotify' %}" class="btn btn-success">Visualizza Tracce Spotify</a>
 {% endblock content %}

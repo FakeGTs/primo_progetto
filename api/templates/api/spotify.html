@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} | Spotify{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4"> API SPOTIFY</h1>
+
+    {% if messaggio_errore %}
+        <div class="alert alert-danger" role="alert">
+            {{ messaggio_errore }}
+        </div>
+    {% endif %}
+
+    {% if tracce %}
+        <div class="list-group mb-5">
+            {% for traccia in tracce %}
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ traccia.titolo|capfirst }}</h5>
+                        <small class="text-muted">Artista: {{ traccia.artista }}</small>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% if not messaggio_errore %}
+            <div class="alert alert-info" role="alert">
+                Nessuna traccia salvata.
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock content %}
